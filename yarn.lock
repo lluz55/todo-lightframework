@@ -119,10 +119,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@lluz55/lightframework@^1.0.0-alpha.6":
-  version "1.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@lluz55/lightframework/-/lightframework-1.0.0-alpha.6.tgz#2cda09fc6dbfb18b200fd71c662398baa4190917"
-  integrity sha512-aEo7hOtY//1RCqY/+RWknZ6iuLdDTClrav91p+u9DnPWoBy9UMIIhJZ7ijSF7Ti5HL2nQfWR3mTf2FhgV90H/A==
+"@lluz55/lightframework@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@lluz55/lightframework/-/lightframework-1.0.0-alpha.7.tgz#799643df5877dd1fc847f59a03cb4d7bacdd6146"
+  integrity sha512-SEMJU/5m2X1d8MzjKa3c3jYd1TFKPQQXJ+Zrz6k2witirpLyayJgBAy3dTaV+6AMPCldj8kMbWipBViArb7Gvg==
 
 ansi-styles@^3.2.1:
   version "3.2.1"
@@ -261,8 +261,3 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
   integrity sha1-yy4SAwZ+DI3h9hQJS5/kVwTqYAM=
-
-typescript@^3.4.5:
-  version "3.4.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
-  integrity sha512-YycBxUb49UUhdNMU5aJ7z5Ej2XGmaIBL0x34vZ82fn3hGvD+bgrMrVDpatgz2f7YxUMJxMkbWxJZeAvDxVe7Vw==

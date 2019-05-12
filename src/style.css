@@ -17,19 +17,93 @@ ul, li {
   text-align: center;
 }
 
-input {
+input[type=text] {
   border: 1px solid #101010;
   padding: 10px 14px;
   border-radius: 3px;
   font-weight: lighter;
   min-width: 310px;
-  outline-color: #202020;
+  outline-color: #2196F3;
+  margin-bottom: 15px;
 }
 
 ::placeholder {
   color: #aaa;
 }
 
+
 .item {
-  
+  max-width: 330px;
+  margin: 0 auto;
+  padding: 9px 3px;
+  position: relative;
+}
+
+.item::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.item > *{
+  float: left;
+}
+
+.item-checked {
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+input[type=checkbox] {
+  border-radius: 50%;
+}
+
+.item > button {
+  position: absolute;
+  right: 2px;
+  font-size: 1.4em;
+  top: 4px;
+  padding: 0;
+  border: none;
+  color: #f3a500;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.checkmark {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #fff;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+}
+
+label {
+  display: block;
+  position: relative;
+  user-select: none;
+  padding-left: 30px;
+}
+
+label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+label:hover input ~ .checkmark {
+  background-color: #f5f5f5;
+}
+
+label input:checked ~ .checkmark {
+  border: 2px solid #2196F3;
+  background-color: #f5f5f5;
+  width: 16px;
+  height: 16px;
 }

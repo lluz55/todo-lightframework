@@ -1,51 +1,76 @@
 import { lf, observable, observableKeyedArray } from '@lluz55/lightframework'
 
-export const App = () => {
-  let todos = observableKeyedArray()
-  let _newTodoValue = observable("")
+export const App = () => {  
 
-  let todo = (item, key) => {
+  let todosComponet = () => {
+    let todosView = observableKeyedArray()
+    let uid = 0
+    let todos = []
+
+
+    let addTodo = (e) => {
+      let val = e.target.value
+      if(e.keyCode === 13){        
+        if(val === '') return 
+        let newTodo = {
+          id: uid,
+          checked: false,
+          description: val
+        }
+        todos.push(newTodo)
+        uid++
+        todosView.push(newTodo.id,todoComp(newTodo))
+        e.target.value = ''        
+      }      
+    }
+
+    return {
+      view: todosView,
+      addTodo: addTodo
+    }
+  }
+
+  let todoComp = newTodo => {
     let _checked = observable('text-decoration: none')
+    let _canRemove = observable('display: none')
     function check(e){
-      _checked.setValue(e.target.checked ? 'text-decoration:line-through' : 'text-decoration:none')
+      let checked = e.target.checked
+      _checked.setValue(checked ? 'item-checked' : '')
+      newTodo.checked = checked
     }
 
     return(
-      <li class="item">
-        <input type="checkbox" oninput={(e)=>check(e)} name={key}/>
-        <label for={key} style={_checked} onclick={(e)=>check(e)}> {item} </label>
-        <button onclick={()=>removeTodo(key)}>x</button>
+      <li class="item" onmouseenter={()=> _canRemove.setValue('display: block')}
+      onmouseleave={()=> _canRemove.setValue('display: none')}
+      >
+        <label class={_checked} onclick={(e)=>check(e)}>
+          <input type="checkbox" oninput={(e)=>check(e)}/>
+          {newTodo.description}        
+          <span class="checkmark"></span>
+        </label> 
+        <button style={_canRemove} onclick={()=>removeTodo(newTodo)}>x</button>
       </li>
     ) 
   }
 
-  let removeTodo = (key) => {
-    todos.remove(key)
+  let removeTodo = todo => {
+    todosView.remove(todo.id)
   }
 
-  let addItemHandler = (e) => {
-    if(e.keyCode === 13){
-      if(_newTodoValue.getValue() === '') return
-      let index = (_newTodoValue.getValue() + todos.getLength()).toString()
-      todos.push(index,todo(_newTodoValue.getValue(), index))
-      _newTodoValue.setValue('')
-      e.target.value = ""
-      return
-    }
-    _newTodoValue.setValue(e.target.value)
-  }
+  let todosComp = todosComponet()
 
   return (
     <div class="content">
       <div class="title">Todo</div>
       <br/>
       <div>
-        <input onkeyup={e=> addItemHandler(e)} placeholder={"Adicione um item"} type="text"/>
-        {todos}
+        <input onkeyup={e=> todosComp.addTodo(e)} placeholder="What needs to be done?" type="text"/>
+        <ul>{todosComp.view}</ul>
       </div>
     </div>
   )
 }
+
 
 App.mount = () => {
   document.body.appendChild(App())

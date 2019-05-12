@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@lluz55/lightframework": "^1.0.0-alpha.6"
+    "@lluz55/lightframework": "^1.0.0-alpha.7"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4"
