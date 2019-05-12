@@ -2,10 +2,53 @@ import { lf, observable, observableKeyedArray } from '@lluz55/lightframework'
 
 export const App = () => {  
 
+  let todoComp = (newTodo, removeTodo) => {
+    let _checked = observable('text-decoration: none')
+    let _canRemove = observable('display: none')
+    function check(e){
+      let checked = e.target.checked
+      _checked.setValue(checked ? 'item-checked' : '')
+      newTodo.checked = checked
+    }
+
+    return(
+      <li class="item" onmouseenter={()=> _canRemove.setValue('display: block')}
+          onmouseleave={()=> _canRemove.setValue('display: none')}
+      >
+        <label class={_checked} onclick={(e)=>check(e)}>
+          <input type="checkbox" oninput={(e)=>check(e)}/>
+          {newTodo.description}        
+          <span class="checkmark"></span>
+        </label> 
+        <button style={_canRemove} onclick={()=>removeTodo(newTodo)}>x</button>
+      </li>
+    ) 
+  }
+
   let todosComponet = () => {
     let todosView = observableKeyedArray()
     let uid = 0
     let todos = []
+
+    let removeTodo = todo => {
+      todos.splice(todos.indexOf(todo), 1)
+      todosView.remove(todo.id)
+    }
+
+    let onInit = (() => {
+      todos = localStorage.getItem('todos') && JSON.parse(localStorage.getItem('todos'))
+      if(todos === null) {
+        todos = []
+      } else {
+        todos.forEach(todo => {
+          todosView.push(todo.id, todoComp(todo, removeTodo))
+        })
+      }
+      todosView.subscribe(()=> {
+        localStorage.setItem('todos', JSON.stringify(todos))
+      })
+    })()
+
 
 
     let addTodo = (e) => {
@@ -19,7 +62,7 @@ export const App = () => {
         }
         todos.push(newTodo)
         uid++
-        todosView.push(newTodo.id,todoComp(newTodo))
+        todosView.push(newTodo.id,todoComp(newTodo,removeTodo))
         e.target.value = ''        
       }      
     }
@@ -30,34 +73,8 @@ export const App = () => {
     }
   }
 
-  let todoComp = newTodo => {
-    let _checked = observable('text-decoration: none')
-    let _canRemove = observable('display: none')
-    function check(e){
-      let checked = e.target.checked
-      _checked.setValue(checked ? 'item-checked' : '')
-      newTodo.checked = checked
-    }
-
-    return(
-      <li class="item" onmouseenter={()=> _canRemove.setValue('display: block')}
-      onmouseleave={()=> _canRemove.setValue('display: none')}
-      >
-        <label class={_checked} onclick={(e)=>check(e)}>
-          <input type="checkbox" oninput={(e)=>check(e)}/>
-          {newTodo.description}        
-          <span class="checkmark"></span>
-        </label> 
-        <button style={_canRemove} onclick={()=>removeTodo(newTodo)}>x</button>
-      </li>
-    ) 
-  }
-
-  let removeTodo = todo => {
-    todosView.remove(todo.id)
-  }
-
   let todosComp = todosComponet()
+
 
   return (
     <div class="content">
