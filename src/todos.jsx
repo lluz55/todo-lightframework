@@ -25,7 +25,7 @@ export const App = () => {
     ) 
   }
 
-  let todosComponet = () => {
+  let todosComp = (() => {
     let todosView = observableKeyedArray()
     let uid = 0
     let todos = []
@@ -49,8 +49,6 @@ export const App = () => {
       })
     })()
 
-
-
     let addTodo = (e) => {
       let val = e.target.value
       if(e.keyCode === 13){        
@@ -71,10 +69,7 @@ export const App = () => {
       view: todosView,
       addTodo: addTodo
     }
-  }
-
-  let todosComp = todosComponet()
-
+  })()
 
   return (
     <div class="content">
