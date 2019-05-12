@@ -30,3 +30,5 @@ or
 ```bash
 npm run dev
 ```
+
+#### Open browser on `http://localhost:1234`
