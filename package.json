@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "rimraf dist",
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,10 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@lluz55/lightframework": "^1.0.0-alpha.10"
+    "@lluz55/lightframework": "^1.0.0-alpha.16"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
-    "babel-plugin-transform-react-jsx": "^6.24.1"
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "cssnano": "^4.1.10",
+    "rimraf": "^2.6.3"
   }
 }
