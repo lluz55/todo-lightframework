@@ -12,9 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@lluz55/lightframework": "^1.0.0-alpha.9"
+    "@lluz55/lightframework": "^1.0.0-alpha.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4"
+    "@babel/core": "^7.4.4",
+    "babel-plugin-transform-react-jsx": "^6.24.1"
   }
 }

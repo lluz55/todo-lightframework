@@ -88,6 +88,10 @@ label {
   padding-left: 30px;
 }
 
+label > div {
+  margin-top: -3px;
+}
+
 label input {
   position: absolute;
   opacity: 0;

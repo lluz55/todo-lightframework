@@ -15,7 +15,7 @@ const todoComp = (newTodo, removeTodo) => {
     >
       <label class={_checked} onclick={(e)=>check(e)}>
         <input type="checkbox" oninput={(e)=>check(e)}/>
-        {newTodo.description}        
+        <div>{newTodo.description}</div>
         <span class="checkmark"></span>
       </label> 
       <button style={_canRemove} onclick={()=>removeTodo(newTodo)}>x</button>
