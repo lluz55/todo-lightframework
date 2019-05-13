@@ -31,4 +31,4 @@ or
 npm run dev
 ```
 
-#### Open your browser on [http://localhost:1234](http://localhost:1234)
+Open your browser on [http://localhost:1234](http://localhost:1234)
