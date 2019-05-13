@@ -2,14 +2,14 @@ import { lf, observable, observableKeyedArray } from '@lluz55/lightframework'
 
 import { todosComp } from './todosComp'
 
-export const App = () => {  
+export const App = () => {
 
   return (
     <div class="content">
       <div class="title">Todo</div>
-      <br/>
+      <br />
       <div>
-        <input onkeyup={e=> todosComp.addTodo(e)} placeholder="What needs to be done?" type="text"/>
+        <input onkeyup={e => todosComp.addTodo(e)} placeholder="What needs to be done?" type="text" />
         <ul>{todosComp.view}</ul>
       </div>
     </div>

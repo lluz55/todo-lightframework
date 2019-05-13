@@ -4,7 +4,6 @@ import { todoComp } from '../todoComp'
 
 const todosComp = (() => {
   let todosView = observableKeyedArray()
-  let uid = 0
   let todos = []
 
   let removeTodo = todo => {
@@ -14,31 +13,30 @@ const todosComp = (() => {
 
   let onInit = (() => {
     todos = localStorage.getItem('todos') && JSON.parse(localStorage.getItem('todos'))
-    if(todos === null) {
+    if (todos === null) {
       todos = []
     } else {
       todos.forEach(todo => {
-        todosView.push(todo.id, todoComp(todo, removeTodo))
+        todosView.push(todo.id, todoComp(todo, removeTodo, todos))
       })
     }
-    todosView.subscribe(()=> {
+    todosView.subscribe(() => {
       localStorage.setItem('todos', JSON.stringify(todos))
     })
   })()
 
   let addTodo = (e) => {
     let val = e.target.value
-    if(e.keyCode === 13){        
-      if(val === '') return 
+    if (e.keyCode === 13) {
+      if (val === '') return
       let newTodo = {
-        id: uid,
+        id: Date.now(),
         checked: false,
         description: val
       }
       todos.push(newTodo)
-      uid++
-      todosView.push(newTodo.id,todoComp(newTodo,removeTodo))
-      e.target.value = ''        
+      todosView.push(newTodo.id, todoComp(newTodo, removeTodo, todos))
+      e.target.value = ''
     }
   }
 
