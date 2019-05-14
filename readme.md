@@ -1,5 +1,5 @@
 # Todo App
-A basic **todo app** made with LightFramework (alpha)
+A basic **todo app** made with LightFramework (proof of concept)
 ### Installation
 Install parcel blunder  
 ```bash
