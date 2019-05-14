@@ -1,14 +1,6 @@
 # Todo App
 A basic **todo app** made with LightFramework (proof of concept)
 ### Installation
-Install parcel blunder  
-```bash
-yarn global add parcel-bundler
-```
-or
-```bash
-npm i -g parcel-blunder
-```
 clone this repo  
 ```bash
 git clone https://github.com/lluz55/todo-lightframework
