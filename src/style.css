@@ -28,7 +28,7 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-  border-color: #2196F3;
+  border-color: rgb(39, 125, 196);
 }
 
 ::placeholder {
@@ -65,7 +65,7 @@ input[type=checkbox] {
   position: absolute;
   right: 2px;
   font-size: 1.4em;
-  top: 4px;
+  top: -1px;
   padding: 0;
   border: none;
   color: #f3a500;

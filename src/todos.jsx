@@ -1,4 +1,4 @@
-import { lf, observable, observableKeyedArray } from '@lluz55/lightframework'
+import { lf } from '@lluz55/lightframework'
 
 import { todosComp } from './todosComp'
 
@@ -16,7 +16,7 @@ export const App = () => {
   )
 }
 
-
+// Render app to the DOM
 App.mount = () => {
   document.body.appendChild(App())
 }
