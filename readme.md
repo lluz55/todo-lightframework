@@ -1,7 +1,7 @@
 # Todo App
 A basic **todo app** made with LightFramework (proof of concept)
 
-#### Live Example
+#### Demo
 https://todo-app-lf.netlify.com
 
 ### Installation
